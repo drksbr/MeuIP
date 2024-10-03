@@ -1,0 +1,37 @@
+
+services:
+  caddy:
+    image: caddy:latest
+    container_name: caddy_proxy
+    ports:
+      - "80:80"
+    environment:
+      - LOGO_URL=${LOGO_URL}
+      - BACKGROUND_COLOR=${BACKGROUND_COLOR}
+    depends_on:
+      - node-server
+    labels:
+      # Configura o proxy reverso para o backend Node.js
+      caddy: :80
+      caddy.reverse_proxy: node-server:3000
+      
+      # Cabeçalhos para passar informações do cliente original
+      caddy.reverse_proxy.header_up.X-Real-IP: "{remote_host}"
+      caddy.reverse_proxy.header_up.X-Forwarded-For: "{remote_host}"
+      caddy.reverse_proxy.header_up.X-Forwarded-Port: "{remote_port}"
+      caddy.reverse_proxy.header_up.X-Forwarded-Proto: "{scheme}"
+  
+  node-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node_server
+    ports:
+      - "3000:3000"
+    environment:
+      - LOGO_URL=${LOGO_URL}
+      - BACKGROUND_COLOR=${BACKGROUND_COLOR}
+
+volumes:
+  caddy_data:
+  caddy_config:
