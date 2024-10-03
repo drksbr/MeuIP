@@ -1,8 +1,6 @@
 
 # MeuIP
 
-![Screenshot do Projeto](https://raw.githubusercontent.com/drksbr/MeuIP/refs/heads/main/screenshots/screen01.png)
-
 MeuIP é uma aplicação web simples que exibe informações detalhadas sobre o endereço IP do usuário, incluindo localização, ISP e outras informações úteis. A aplicação é construída com Node.js e Express, utiliza Tailwind CSS para o design e é containerizada usando Docker. O Nginx Proxy Manager é usado para gerenciamento de proxy reverso.
 
 ## Índice
@@ -22,7 +20,7 @@ MeuIP é uma aplicação web simples que exibe informações detalhadas sobre o 
 
 ## Demonstração
 
-*Inclua aqui uma captura de tela da aplicação em funcionamento.*
+![Screenshot do Projeto](https://raw.githubusercontent.com/drksbr/MeuIP/refs/heads/main/screenshots/screen01.png)
 
 ## Características
 
